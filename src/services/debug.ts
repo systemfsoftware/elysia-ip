@@ -1,5 +1,5 @@
-import { debuglog } from "node:util";
+import { debuglog } from 'node:util'
 
 export const debug = (message: string) => {
-  debuglog("elysia-ip")(message);
-};
+  debuglog('elysia-ip')(message)
+}

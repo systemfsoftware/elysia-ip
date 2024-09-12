@@ -1,40 +1,60 @@
 {
-  "name": "elysia-ip",
-  "version": "1.0.7",
+  "name": "@systemfsoftware/elysia-ip",
+  "version": "1.1.1",
   "type": "module",
-  "author": {
-    "name": "Gaurish Sethia",
-    "url": "https://github.com/gaurishhs",
-    "email": "gaurishh.sethia@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gaurishhs/elysia-ip"
-  },
-  "main": "./dist/index.js",
+  "module": "./dist/esm/mod.js",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.js",
-    "node": "./dist/index.js",
-    "default": "./dist/index.js"
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "@systemfsoftware/source": "./src/mod.ts",
+        "types": "./dist/esm/mod.d.ts",
+        "default": "./dist/esm/mod.js"
+      }
+    }
   },
-  "types": "./dist/index.d.ts",
-  "bugs": "https://github.com/gaurishhs/elysia-ip/issues",
-  "homepage": "https://github.com/gaurishhs/elysia-ip",
-  "keywords": ["elysia", "typescript", "ip"],
+  "keywords": [
+    "elysia",
+    "typescript",
+    "ip"
+  ],
+  "files": [
+    "dist"
+  ],
+  "tshy": {
+    "dialects": [
+      "esm"
+    ],
+    "project": "./tsconfig.build.json",
+    "exports": {
+      "./package.json": "./package.json",
+      ".": "./src/mod.ts"
+    },
+    "sourceDialects": [
+      "@systemfsoftware/source"
+    ]
+  },
   "scripts": {
     "dev": "NODE_DEBUG=* bun run --hot example/basic.ts",
-    "build": "rm -rf dist && tsc --project tsconfig.esm.json",
+    "prepare": "bun run build",
+    "clean": "rimraf dist .tshy .tshy-build",
+    "build": "bun run clean && tshy",
+    "format": "dprint fmt",
+    "format:check": "dprint check",
     "lint": "eslint . --ext .ts"
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/bun": "^1.1.2",
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/bun": "^1.1.9",
     "@types/debug": "^4.1.12",
-    "@typescript-eslint/eslint-plugin": "^7.9.0",
-    "@typescript-eslint/parser": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "dprint": "^0.47.2",
     "elysia": "^1.0.20",
-    "eslint": "^9.2.0",
+    "eslint": "^9.10.0",
+    "rimraf": "^6.0.1",
+    "tshy": "^3.0.2",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {

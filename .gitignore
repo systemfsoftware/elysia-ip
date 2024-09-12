@@ -178,3 +178,7 @@ dist
 package-lock.json
 pnpm-lock.yaml
 yaml.lock
+
+.turbo
+.tshy
+.tshy-build

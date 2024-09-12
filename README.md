@@ -1,4 +1,4 @@
-# elysia-ip
+# @systemfsoftware/elysia-ip
 
 ![badge](https://github.com/gaurishhs/elysia-ip/actions/workflows/npm-publish.yml/badge.svg)
 

@@ -1,17 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@total-typescript/tsconfig/tsc/no-dom/library-monorepo",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "ES2021",
-    "types": ["bun-types"],
-    "removeComments": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "module": "ES2022",
-    "outDir": "./dist",
-    "lib": ["ESNext", "DOM", "ScriptHost"],
-    "declaration": true
+    "customConditions": ["@systemfsoftware/source"]
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

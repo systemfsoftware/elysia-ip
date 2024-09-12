@@ -1,19 +1,19 @@
-import type { Server } from "bun"
-import type Elysia from "elysia"
+import type { Server } from 'bun'
+import type { Elysia } from 'elysia'
 
 export type IPHeaders =
-  | "x-real-ip"
-  | "x-client-ip"
-  | "cf-connecting-ip"
-  | "fastly-client-ip"
-  | "x-cluster-client-ip"
-  | "x-forwarded"
-  | "forwarded-for"
-  | "forwarded"
-  | "x-forwarded"
-  | "appengine-user-ip"
-  | "true-client-ip"
-  | "cf-pseudo-ipv4"
+  | 'x-real-ip'
+  | 'x-client-ip'
+  | 'cf-connecting-ip'
+  | 'fastly-client-ip'
+  | 'x-cluster-client-ip'
+  | 'x-forwarded'
+  | 'forwarded-for'
+  | 'forwarded'
+  | 'x-forwarded'
+  | 'appengine-user-ip'
+  | 'true-client-ip'
+  | 'cf-pseudo-ipv4'
   | (string & {})
 
 export type InjectServer = (app: Elysia) => Server | null
@@ -29,8 +29,6 @@ export interface Options {
    * @default false
    */
   headersOnly?: boolean
-  /**
-   *
-   */
+  /** */
   injectServer: InjectServer
 }

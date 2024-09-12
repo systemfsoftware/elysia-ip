@@ -1,8 +1,8 @@
-import { Elysia } from "elysia"
-import { defaultOptions, ip } from "elysia-ip"
-import bearer from "@elysiajs/bearer"
+import bearer from '@elysiajs/bearer'
+import { Elysia } from 'elysia'
+import { defaultOptions, ip } from 'elysia-ip'
 
-import type { Server } from "bun"
+import type { Server } from 'bun'
 
 let server: Server | null
 
@@ -14,31 +14,31 @@ const setup = new Elysia({
    * https://elysiajs.com/essential/plugin.html#plugin-deduplication
    * https://elysiajs.com/essential/context.html#affix
    */
-  name: "setup", //
+  name: 'setup', //
 })
   .use(ip())
   .use(bearer())
 
 const aInstance = new Elysia({
-  name: "routeA",
+  name: 'routeA',
 })
   .use(setup)
-  .get("/a", ({ bearer, ip }) => "a")
+  .get('/a', ({ bearer, ip }) => 'a')
 
 const bInstance = new Elysia({
-  name: "routeB",
+  name: 'routeB',
 })
   .use(setup)
-  .get("/b", ({ bearer, ip }) => "b")
+  .get('/b', ({ bearer, ip }) => 'b')
 
 const app = new Elysia({
-  name: "mainApp",
+  name: 'mainApp',
 })
   .use(aInstance)
   .use(bInstance)
-  .get("/", () => "hello")
+  .get('/', () => 'hello')
   .listen(3000, () => {
-    console.log("🦊 Swagger is active at: http://localhost:3000/swagger")
+    console.log('🦊 Swagger is active at: http://localhost:3000/swagger')
   })
 
 server = app.server
